@@ -1,6 +1,6 @@
 #importing the basic library that we will use for the development of this project
 from tkinter import *
-#from PIL import Image,ImageTk
+from PIL import Image,ImageTk
 import random
 
 #these are some of the variables that we will use in rock paper and scissor game
@@ -167,7 +167,7 @@ def maingame():
 #if __name__=='__main__':
 root=Tk()
 root.title('Rock Paper Scissor - CopyAssignment')
-#root.wm_iconbitmap("play.png")
+root.wm_iconbitmap("play.png")
 #the below three lines are used to set the size of the window of username and main game
 root.geometry('650x750')
 #this maxsize() function is used to set the max size of window equivlent to the one that we passed in the function
@@ -191,11 +191,11 @@ pcchose=Label()
 #this window will allow the user to add the username of his/her choice
 #once the username is added the user will be able to enter in the game
 f1=Frame(root)
-#img=Image.open('symbols.png')
+img=Image.open('symbols.png')
 #img=img.resize((650,450),Image.ANTIALIAS)
-#ic=ImageTk.PhotoImage(img)
-#Lab=Label(f1,image=pic)
-#Lab.pack()
+pic=ImageTk.PhotoImage(img)
+Lab=Label(f1,image=pic)
+Lab.pack()
 f1.pack()
 
 #we made a label widget to add the label that informs the user about entering his/her name in rock, paper and sicssor game
