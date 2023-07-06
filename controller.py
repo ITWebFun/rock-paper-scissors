@@ -2,7 +2,7 @@ from model import *
 
 user, computer = Player(), Player()
 
-def start_game(username):
+def set_user_name(username):
     user.set_name(username)
 
 def play(choice):
