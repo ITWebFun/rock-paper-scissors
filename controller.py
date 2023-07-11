@@ -5,12 +5,16 @@ user, computer = Player(), Player()
 def set_user_name(username):
     user.set_name(username)
 
-def play(choice):
+def set_choice(choice):
     user.set_choice(choice)
     computer.set_choice()
+
+def play(choice):
+    set_choice(choice)
     
     user_choice = user.get_choice()
     pc_choice = computer.get_choice()
+    #print(pc_choice)
     
     if (user_choice == 'Rock' and pc_choice == 'Scissors') \
         or (user_choice == 'Paper' and pc_choice == 'Rock') \
@@ -18,7 +22,7 @@ def play(choice):
         user.increase_score()
         return f'{user.get_name()} wins!'
     elif user_choice == pc_choice:
-        computer.increase_score()
         return 'It\'s a tie!'
     else:
+        computer.increase_score()
         return 'The computer won!'

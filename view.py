@@ -2,8 +2,6 @@ from tkinter import *
 from PIL import ImageTk, Image
 import os, controller
 
-print('path: ' + os.getcwd())
-
 root = Tk()
 
 root.title('Rock, Paper, Scissors')
@@ -22,7 +20,7 @@ logo_label = Label(frame, image = img)
 logo_label.grid(row=0,ipadx=70,padx=33,pady=10)
 
 game_name = Label(text='Rock, Paper, Scissors!',font='arial 35 bold',bg='black',fg='white')
-game_name.grid(row=1,ipadx=70,padx=33,pady=10)
+game_name.grid(row=1,column=0,columnspan=2,ipadx=70,padx=33,pady=10)
 
 #we made a label widget to add the label that informs the user about entering his/her name in rock, paper and sicssor game
 name=Label(root,text='Enter Your Name :',font='arial 15 bold')
@@ -33,46 +31,63 @@ def enter(event):
     event.widget.config(bg='black',fg='white')
 def leave(event):
     event.widget.config(bg='white',fg='black')
-def click(event):
-    controller.play(event.widget.cget('text'))
 
 #creating the game window        
 def main_game_window():
     
+    def click(event):
+        win_label.config(text = controller.play(event.widget.cget('text')),font='comicsansms 18 bold')
+        player_score.config(text=f'{controller.user.get_name()} Score: {controller.user.get_score()}',font='comicsansms 18 bold')
+        computer_score.config(text=f'Computer Score: {controller.computer.get_score()}',font='comicsansms 18 bold')
+    
     #the below are the set of buttons that are available for the player 1
     rock=Button(text='Rock',font='comicsansms 18 bold',height=1,width=7)
-    rock.grid(row=3,column=0,pady=15)
+    rock.grid(row=3,column=0,padx=0,pady=15)
     #the bind() is used to bind multiple methods in the Program
     rock.bind('<Enter>',enter)
     rock.bind('<Leave>',leave)
     rock.bind('<Button-1>',click)
     paper=Button(text='Paper',font='comicsansms 18 bold',height=1,width=7)
-    paper.grid(row=4,column=0)
+    paper.grid(row=4,column=0,padx=0, pady = 15)
     paper.bind('<Enter>',enter)
     paper.bind('<Leave>',leave)
     paper.bind('<Button-1>',click)
     scissor=Button(text='Scissor',font='comicsansms 18 bold',height=1,width=7)
-    scissor.grid(row=5,column=0,pady=15)
+    scissor.grid(row=5,column=0,padx=0,pady=15)
     scissor.bind('<Enter>',enter)
     scissor.bind('<Leave>',leave)
     scissor.bind('<Button-1>',click)
+    
+    #info labels with player and computer score and the pick of the computer
+    player_score = Label(text=f'{controller.user.get_name()} Score: {controller.user.get_score()}',font='comicsansms 18 bold')
+    player_score.grid(row=3, column=1)
+    computer_score = Label(text=f'Computer Score: {controller.computer.get_score()}',font='comicsansms 18 bold')
+    computer_score.grid(row=4, column=1)
+    win_label = Label(text='',font='comicsansms 18 bold')
+    win_label.grid(row=5, column=1)
+    
+    end_btn = Button(text='End game!',font='comicsansms 18 bold',height=1,width=7,command=root.destroy)
+    end_btn.grid(row=6, column=0, columnspan=2, ipadx=15)
+    end_btn.bind('<Enter>',enter)
+    end_btn.bind('<Leave>',leave)
 
 #enters the main game window
 def start_game():
-    controller.set_user_name(nameinp)
+    controller.set_user_name(input_name.get())
     frame.destroy()
     logo_label.destroy()
     name.destroy()
-    inpname.destroy()
+    input_name.destroy()
     sub.destroy()
     main_game_window()
 
 #This below variable will store the name of user and will further be used to display the name of the user wherever we want to display
-nameinp=StringVar()
-inpname=Entry(root,textvar=nameinp,font='arial 10 bold')
-#We binded Return event with inpname entry widget i.e. if enter key is pressed then entergame function will be called
-inpname.bind('<Return>',start_game)  
-inpname.place(x=275,y=290)
+#nameinp=StringVar()
+#input_name=Entry(root,textvar=nameinp,font='arial 10 bold')
+input_name=Entry(root,font='arial 10 bold')
+#We binded Return event with input_name entry widget i.e. if enter key is pressed then entergame function will be called
+input_name.bind('<Return>',start_game)  
+input_name.place(x=275,y=290)
 
 #this is the button that will appear on the home username window
 #a button of lets play is added so that the user can enter the main game window once the username is added
