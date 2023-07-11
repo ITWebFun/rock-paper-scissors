@@ -75,7 +75,7 @@ def main_game_window():
     end_btn.bind('<Leave>',leave)
 
 #enters the main game window
-def start_game():
+def start_game(event=None):
     controller.set_user_name(input_name.get())
     frame.destroy()
     logo_label.destroy()
@@ -83,6 +83,7 @@ def start_game():
     input_name.destroy()
     sub.destroy()
     main_game_window()
+    
 
 #This below variable will store the name of user and will further be used to display the name of the user wherever we want to display
 #nameinp=StringVar()
