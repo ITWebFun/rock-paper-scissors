@@ -1,6 +1,7 @@
 from model import *
 
-user, computer = Player(), Player()
+user = Player()
+computer = Player()
 
 def set_user_name(username):
     user.set_name(username)

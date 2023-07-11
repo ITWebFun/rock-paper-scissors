@@ -2,9 +2,12 @@ from tkinter import *
 from PIL import ImageTk, Image
 import os, controller
 
+cwd = os.getcwd()
+
 root = Tk()
 
 root.title('Rock, Paper, Scissors')
+root.wm_iconbitmap(cwd + "\images\play.ico")
 root.minsize(725,450)
 root.maxsize(725,450)
 
@@ -13,7 +16,7 @@ frame.pack()
 frame.place(anchor='center', relx=0.5, rely=0.5)
 
 # Create an object of tkinter ImageTk
-img = ImageTk.PhotoImage(Image.open(os.getcwd() + '\images\symbols.png'))
+img = ImageTk.PhotoImage(Image.open(cwd + '\images\symbols.png'))
 
 # Create a Label Widget to display the text or Image
 logo_label = Label(frame, image = img)

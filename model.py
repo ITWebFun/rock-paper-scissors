@@ -24,31 +24,3 @@ class Player:
         
     def get_choice(self):
         return self.choice
-
-"""
-def get_computer_choice():
-    return random.choice(choices)
-
-user_score = 0
-
-def get_user_score():
-    return user_score
-
-def increase_user_score():
-    user_score += 1
-    
-pc_score = 0
-
-def get_pc_score():
-    return pc_score
-
-def increase_pc_score():
-    pc_score += 1
-    
-user_name = ''
-
-def get_user_name():
-    return user_name
-
-def set_user_name(name):
-    user_name = name"""
