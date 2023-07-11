@@ -1,5 +1,5 @@
 import random
-choices = ['Rock', 'Paper', 'Scissors']
+choices = ('Rock', 'Paper', 'Scissors')
 
 class Player:
     def __init__(self,name='Computer',score=0, choice=random.choice(choices)):
