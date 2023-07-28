@@ -55,11 +55,11 @@ def main_game_window():
     paper.bind('<Enter>',enter)
     paper.bind('<Leave>',leave)
     paper.bind('<Button-1>',click)
-    scissor=Button(text='Scissor',font='comicsansms 18 bold',height=1,width=7)
-    scissor.grid(row=5,column=0,padx=0,pady=15)
-    scissor.bind('<Enter>',enter)
-    scissor.bind('<Leave>',leave)
-    scissor.bind('<Button-1>',click)
+    scissors=Button(text='Scissors',font='comicsansms 18 bold',height=1,width=7)
+    scissors.grid(row=5,column=0,padx=0,pady=15)
+    scissors.bind('<Enter>',enter)
+    scissors.bind('<Leave>',leave)
+    scissors.bind('<Button-1>',click)
     
     #info labels with player and computer score and the pick of the computer
     player_score = Label(text=f'{controller.user.get_name()} Score: {controller.user.get_score()}',font='comicsansms 18 bold')
